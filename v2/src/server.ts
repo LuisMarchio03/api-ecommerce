@@ -1,9 +1,9 @@
 import "dotenv/config";
+import "reflect-metadata";
 
 import express from "express";
 import cors from "cors";
 
-import "reflect-metadata";
 import "./database";
 import "./shared/container";
 
@@ -16,5 +16,5 @@ app.use(cors());
 app.use(routes);
 
 app.listen(5555, () => {
-  console.log("Server is running on port 3333");
+  console.log("Server is running on port 5555");
 });

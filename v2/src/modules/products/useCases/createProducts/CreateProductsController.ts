@@ -5,7 +5,7 @@ import { CreateProductsUseCase } from "./CreateProductsUseCase";
 export class CreateProductsController {
   async handle(request: Request, response: Response): Promise<Response> {
     try {
-      const { name, description, price } = request.body;
+      const { name, description, price, category_id } = request.body;
 
       const createProductsUseCase = container.resolve(CreateProductsUseCase);
 
@@ -13,6 +13,7 @@ export class CreateProductsController {
         name,
         description,
         price,
+        category_id,
       });
 
       return response.status(200).json(products);

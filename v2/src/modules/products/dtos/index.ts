@@ -9,4 +9,10 @@ export interface ICreateProduct {
   name: string;
   description: string;
   price: number;
+  category_id: string;
+}
+
+export interface ICreateCategoryDTO {
+  name: string;
+  description: string;
 }

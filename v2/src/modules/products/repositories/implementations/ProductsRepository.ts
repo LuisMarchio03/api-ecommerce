@@ -15,8 +15,14 @@ export class ProductsRepository implements IProductsRepository {
     name,
     description,
     price,
+    category_id,
   }: ICreateProduct): Promise<Products> {
-    const user = this.repository.create({ name, description, price });
+    const user = this.repository.create({
+      name,
+      description,
+      price,
+      category_id,
+    });
 
     await this.repository.save(user);
 
@@ -29,6 +35,9 @@ export class ProductsRepository implements IProductsRepository {
   async findByName(name: string): Promise<Products> {
     const user = await this.repository.findOne(name);
     return user;
+  }
+  findByCategoryId(category_id: string): Promise<Products> {
+    throw new Error("Method not implemented.");
   }
   async update(id: string): Promise<void> {
     throw new Error("Method not implemented.");

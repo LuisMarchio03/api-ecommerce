@@ -15,6 +15,7 @@ export class CreateProductsUseCase {
     name,
     description,
     price,
+    category_id,
   }: ICreateProduct): Promise<Products> {
     const productsAlreadyExists = await this.productsRepository.findByName(
       name
@@ -28,6 +29,7 @@ export class CreateProductsUseCase {
       name,
       description,
       price,
+      category_id,
     });
 
     return products;
