@@ -2,6 +2,8 @@
 
 **[X] SOLID**
 
-**[] CRUD Completo de categorias**
+**[X] Create and List to categories**
 
 **[X] FK category => Products**
+
+**[] ADD Column quantity => Table Products**

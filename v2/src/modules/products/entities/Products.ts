@@ -24,6 +24,9 @@ export class Products {
   @Column()
   price: number;
 
+  @Column()
+  quantity: number;
+
   @ManyToOne(() => Category) // Muitos produtos para uma categoria
   @JoinColumn({ name: "category_id" }) // Nome da coluna, que é uma FK
   category: Category;

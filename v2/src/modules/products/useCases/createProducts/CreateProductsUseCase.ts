@@ -1,5 +1,4 @@
 import { inject, injectable } from "tsyringe";
-import { getCustomRepository } from "typeorm";
 import { ICreateProduct } from "../../dtos";
 import { Products } from "../../entities/Products";
 import { IProductsRepository } from "../../repositories/IProductsRepository";
@@ -15,6 +14,7 @@ export class CreateProductsUseCase {
     name,
     description,
     price,
+    quantity,
     category_id,
   }: ICreateProduct): Promise<Products> {
     const productsAlreadyExists = await this.productsRepository.findByName(
@@ -29,6 +29,7 @@ export class CreateProductsUseCase {
       name,
       description,
       price,
+      quantity,
       category_id,
     });
 

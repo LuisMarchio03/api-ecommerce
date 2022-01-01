@@ -9,6 +9,7 @@ export class ProductsRepositoryInMemory implements IProductsRepository {
     name,
     description,
     price,
+    quantity,
     category_id,
   }: ICreateProduct): Promise<Products> {
     const product = new Products();
@@ -17,6 +18,7 @@ export class ProductsRepositoryInMemory implements IProductsRepository {
       name,
       description,
       price,
+      quantity,
       category_id,
     });
 

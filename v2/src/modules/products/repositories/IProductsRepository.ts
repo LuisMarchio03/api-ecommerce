@@ -6,11 +6,12 @@ export interface IProductsRepository {
     name,
     description,
     price,
+    quantity,
     category_id,
   }: ICreateProduct): Promise<Products>;
   find(): Promise<Products[]>;
   findByName(name: string): Promise<Products>;
-  findByCategoryId(category_id: string): Promise<Products>;
+  findByCategoryId(category_id: string): Promise<Products[]>;
   update(id: string): Promise<void>;
   delete(id: string): Promise<void>;
 }

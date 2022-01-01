@@ -22,6 +22,7 @@ describe("List Product By CategoryId", () => {
       name: "New Product",
       category_id: "category_id",
       description: "Description",
+      quantity: 20,
       price: 120,
     });
 

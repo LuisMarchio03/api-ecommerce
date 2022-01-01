@@ -24,6 +24,10 @@ export class CreateProductsFK1640964504638 implements MigrationInterface {
             type: "varchar",
           },
           {
+            name: "quantity",
+            type: "int",
+          },
+          {
             name: "category_id",
             type: "uuid",
             isNullable: true,
