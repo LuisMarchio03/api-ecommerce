@@ -6,4 +6,4 @@
 
 **[X] FK category => Products**
 
-**[] ADD Column quantity => Table Products**
+**[X] ADD Column quantity => Table Products**
