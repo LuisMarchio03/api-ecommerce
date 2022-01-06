@@ -8,10 +8,34 @@
 
 **[X] ADD Column quantity => Table Products**
 
-**[] Aplicar conceito de SEED**
+## CLIENTS
 
-**[] Usuário admin**
+**[] CRUD de Clientes**
+
+**[] Cadastrar cartão de credito**
+
+**[] Listagem de cartão de credito**
+
+**[] Relacionamento tabela de clients + tabela de cartão de credito (Muitos cartões para um cliente)**
+
+## Payments
+
+**[] CRUD completo de dados de pagamentos**
 
 **[] Rota para pagamentos**
 
-**[] CRUD completo de dados de pagamentos**
+## SELLER
+
+**[] Cadastrar conta bancaria**
+
+## OTHER
+
+**[] Aplicar conceito de SEED**
+
+**[] Sistemas de buscas => query-builder - Em todos os CRUD's da aplicação**
+
+## Accounts - usuários do dashboard
+
+**[] CRUD de users**
+
+**[] Users ADMIN do sistema**

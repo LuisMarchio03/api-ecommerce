@@ -2,8 +2,8 @@ import { getRepository } from "typeorm";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
-import { IUserRepository } from "../../repositories/IUserRepository";
-import { User } from "../../entities/User";
+import { ISellerRepository } from "../../repositories/ISellerRepository";
+import { Seller } from "../../entities/Seller";
 
 interface IRequest {
   email: string;
@@ -19,7 +19,7 @@ interface IResponse {
 }
 
 class AuthenticateUserUseCase {
-  constructor(private userRepository = getRepository(User)) {}
+  constructor(private userRepository = getRepository(Seller)) {}
 
   async execute({ email, password }: IRequest): Promise<IResponse> {
     // Usuário existe?

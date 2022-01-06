@@ -1,18 +1,18 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
-import { getCustomRepository, getRepository } from "typeorm";
-import { User } from "../modules/accounts/entities/User";
+import { getRepository } from "typeorm";
+import { Seller } from "../modules/sellers/entities/Seller";
 
 interface IPayload {
   sub: string;
 }
 
-export async function ensureAuthenticated(
+export async function ensureAuthenticatedSeller(
   request: Request,
   response: Response,
   next: NextFunction
 ) {
-  const userRepository = getRepository(User);
+  const userRepository = getRepository(Seller);
 
   const authHeader = request.headers.authorization;
 

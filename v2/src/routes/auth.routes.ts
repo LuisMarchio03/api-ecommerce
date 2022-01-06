@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { AuthenticateUserController } from "../modules/accounts/useCases/Auth/AuthenticateUserController";
-import { TokenValidateController } from "../modules/accounts/useCases/Auth/TokenValidateController";
+import { AuthenticateUserController } from "../modules/sellers/useCases/Auth/AuthenticateUserController";
+import { TokenValidateController } from "../modules/sellers/useCases/Auth/TokenValidateController";
 
 const authRoute = Router();
 

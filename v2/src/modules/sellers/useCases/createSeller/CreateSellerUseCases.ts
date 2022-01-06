@@ -1,14 +1,14 @@
-import { User } from "../../entities/User";
+import { Seller } from "../../entities/Seller";
 import { hash } from "bcryptjs";
-import { ICreateUser } from "../../dtos";
+import { ICreateSellerDTO } from "../../dtos";
 import { injectable, inject } from "tsyringe";
-import { IUserRepository } from "../../repositories/IUserRepository";
+import { ISellerRepository } from "../../repositories/ISellerRepository";
 
 @injectable()
-export class CreateUserUseCases {
+export class CreateSellerUseCases {
   constructor(
-    @inject("UserRepository")
-    private userRepository: IUserRepository
+    @inject("SellerRepository")
+    private sellerRepository: ISellerRepository
   ) {}
 
   async execute({
@@ -22,8 +22,8 @@ export class CreateUserUseCases {
     number,
     cep,
     isAdmin,
-  }: ICreateUser): Promise<User> {
-    const userAlreadyExists = await this.userRepository.findByName(name);
+  }: ICreateSellerDTO): Promise<Seller> {
+    const userAlreadyExists = await this.sellerRepository.findByName(name);
 
     if (userAlreadyExists) {
       throw new Error("User already exists");
@@ -31,7 +31,7 @@ export class CreateUserUseCases {
 
     const passwordHash = await hash(password, 8);
 
-    const user = this.userRepository.create({
+    const user = this.sellerRepository.create({
       name,
       email,
       password: passwordHash,

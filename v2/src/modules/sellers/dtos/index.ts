@@ -1,4 +1,4 @@
-export interface ICreateUser {
+export interface ICreateSellerDTO {
   name: string;
   email: string;
   password: string;

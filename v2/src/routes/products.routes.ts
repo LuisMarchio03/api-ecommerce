@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
+import { ensureAuthenticatedSeller } from "../middlewares/ensureAuthenticatedSeller";
 
 import { CreateProductsController } from "../modules/products/useCases/createProducts/CreateProductsController";
 import { DeleteProductsController } from "../modules/products/useCases/deleteProducts/DeleteProductsController";
@@ -11,28 +11,16 @@ const productsRoutes = Router();
 
 productsRoutes.post(
   "/",
-  ensureAuthenticated,
+  ensureAuthenticatedSeller,
   new CreateProductsController().handle
 );
-productsRoutes.get(
-  "/",
-  ensureAuthenticated,
-  new ListAllProductsController().handle
-);
-productsRoutes.get(
-  "/search",
-  ensureAuthenticated,
-  new listProductsByCategoryIdController().handle
-);
+productsRoutes.get("/", new ListAllProductsController().handle);
+productsRoutes.get("/search", new listProductsByCategoryIdController().handle);
 // productsRoutes.put(
 //   "/:id",
 //   ensureAuthenticated,
 //   new UpdateProductsController().handle
 // );
-productsRoutes.delete(
-  "/:id",
-  ensureAuthenticated,
-  new DeleteProductsController().handle
-);
+productsRoutes.delete("/:id", new DeleteProductsController().handle);
 
 export { productsRoutes };

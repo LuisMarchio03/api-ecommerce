@@ -1,13 +1,13 @@
 import { getRepository, Repository } from "typeorm";
-import { ICreateUser } from "../../dtos";
-import { User } from "../../entities/User";
-import { IUserRepository } from "../IUserRepository";
+import { ICreateSellerDTO } from "../../dtos";
+import { Seller } from "../../entities/Seller";
+import { ISellerRepository } from "../ISellerRepository";
 
-export class UserRepository implements IUserRepository {
-  private repository: Repository<User>;
+export class SellerRepository implements ISellerRepository {
+  private repository: Repository<Seller>;
 
   constructor() {
-    this.repository = getRepository(User);
+    this.repository = getRepository(Seller);
   }
 
   async create({
@@ -21,8 +21,8 @@ export class UserRepository implements IUserRepository {
     number,
     cep,
     isAdmin,
-  }: ICreateUser): Promise<User> {
-    const user = this.repository.create({
+  }: ICreateSellerDTO): Promise<Seller> {
+    const seller = this.repository.create({
       name,
       email,
       password,
@@ -32,30 +32,29 @@ export class UserRepository implements IUserRepository {
       address,
       number,
       cep,
-      isAdmin,
     });
 
-    await this.repository.save(user);
+    await this.repository.save(seller);
 
-    return user;
+    return seller;
   }
 
-  async find(): Promise<User[]> {
+  async find(): Promise<Seller[]> {
     const user = await this.repository.find();
     return user;
   }
 
-  async findByEmail(email: string): Promise<User> {
+  async findByEmail(email: string): Promise<Seller> {
     const user = await this.repository.findOne({ email });
     return user;
   }
 
-  async findByName(name: string): Promise<User> {
+  async findByName(name: string): Promise<Seller> {
     const user = await this.repository.findOne({ name });
     return user;
   }
 
-  async findById(id: string): Promise<User> {
+  async findById(id: string): Promise<Seller> {
     const user = await this.repository.findOne(id);
     return user;
   }

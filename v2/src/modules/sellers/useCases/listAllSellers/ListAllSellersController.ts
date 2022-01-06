@@ -1,12 +1,12 @@
 import { container } from "tsyringe";
 import { Request, Response } from "express";
-import { ListAllUsersUseCase } from "./ListAllUsersUseCase";
+import { ListAllSellersUseCase } from "./ListAllSellersUseCase";
 
-export class ListAllUsersController {
+export class ListAllSellersController {
   async handle(request: Request, response: Response): Promise<Response> {
     try {
-      const listAllUsersUseCase = container.resolve(ListAllUsersUseCase);
-      const results = await listAllUsersUseCase.execute();
+      const listAllSellersUseCase = container.resolve(ListAllSellersUseCase);
+      const results = await listAllSellersUseCase.execute();
 
       return response.status(201).json(results);
     } catch (err) {

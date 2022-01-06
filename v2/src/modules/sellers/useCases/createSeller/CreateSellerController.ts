@@ -1,8 +1,8 @@
 import { container } from "tsyringe";
 import { Request, Response } from "express";
-import { CreateUserUseCases } from "./CreateUserUseCases";
+import { CreateSellerUseCases } from "./CreateSellerUseCases";
 
-export class CreateUserController {
+export class CreateSellerController {
   async handle(request: Request, response: Response): Promise<Response> {
     try {
       const {
@@ -18,7 +18,7 @@ export class CreateUserController {
         isAdmin,
       } = request.body;
 
-      const createUserUseCases = container.resolve(CreateUserUseCases);
+      const createUserUseCases = container.resolve(CreateSellerUseCases);
 
       const user = createUserUseCases.execute({
         name,

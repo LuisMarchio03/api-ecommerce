@@ -2,15 +2,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
-  OneToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 
-@Entity("users")
-export class User {
+@Entity("sellers")
+export class Seller {
   @PrimaryColumn()
   id?: string;
 
@@ -28,9 +26,6 @@ export class User {
 
   @Column()
   cpf: string;
-
-  @Column()
-  isAdmin: boolean;
 
   @Column()
   city: string;
@@ -53,10 +48,6 @@ export class User {
   constructor() {
     if (!this.id) {
       this.id = uuid();
-    }
-
-    if (!this.isAdmin) {
-      this.isAdmin = false;
     }
   }
 }
