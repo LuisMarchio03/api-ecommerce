@@ -33,11 +33,8 @@ export class ProductsRepositoryInMemory implements IProductsRepository {
     const product = this.products.find((product) => product.name === name);
     return product;
   }
-  async findByCategoryId(category_id: string): Promise<Products> {
-    const product = this.products.find(
-      (product) => product.category_id === category_id
-    );
-    return product;
+  async findByCategoryId(category_id: string): Promise<Products[]> {
+    throw new Error("Method not implemented.");
   }
   update(id: string): Promise<void> {
     throw new Error("Method not implemented.");

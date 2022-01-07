@@ -39,11 +39,7 @@ export class ProductsRepository implements IProductsRepository {
     return user;
   }
   async findByCategoryId(category_id: string): Promise<Products[]> {
-    const users = await this.repository.find();
-
-    const user = users.filter((user) => user.category_id === category_id);
-
-    return user;
+    throw new Error("Method not implemented.");
   }
   async update(id: string): Promise<void> {
     throw new Error("Method not implemented.");

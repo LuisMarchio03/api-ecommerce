@@ -34,7 +34,7 @@
 
 **[] Sistemas de buscas => query-builder - Em todos os CRUD's da aplicação**
 
-## Accounts - usuários do dashboard
+## ADMIN - usuários do dashboard
 
 **[] CRUD de users**
 

@@ -1,9 +1,7 @@
 import { getRepository } from "typeorm";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
-
-import { ISellerRepository } from "../../repositories/ISellerRepository";
-import { Seller } from "../../entities/Seller";
+import { Client } from "../../entities/Client";
 
 interface IRequest {
   email: string;
@@ -18,19 +16,19 @@ interface IResponse {
   token: string;
 }
 
-class AuthenticateUserUseCase {
-  constructor(private userRepository = getRepository(Seller)) {}
+class AuthenticateClientUseCase {
+  constructor(private clientRepository = getRepository(Client)) {}
 
   async execute({ email, password }: IRequest): Promise<IResponse> {
     // Usuário existe?
-    const user = await this.userRepository.findOne({ email });
+    const client = await this.clientRepository.findOne({ email });
 
-    if (!user) {
+    if (!client) {
       throw new Error("Email or password incorrect");
     }
 
     // Senha está correta?
-    const passwordMath = await compare(password, user.password);
+    const passwordMath = await compare(password, client.password);
 
     if (!passwordMath) {
       throw new Error("Email or password incorrect");
@@ -38,15 +36,15 @@ class AuthenticateUserUseCase {
 
     // Gerar JWT
     const token = sign({}, "4537944749aa8d900ac3d1cdb625fff7", {
-      subject: user.id,
+      subject: client.id,
       expiresIn: "1d", // 1 Dia
     });
 
     const tokenReturn: IResponse = {
       token,
       user: {
-        email: user.email,
-        name: user.name,
+        email: client.email,
+        name: client.name,
       },
     };
 
@@ -54,4 +52,4 @@ class AuthenticateUserUseCase {
   }
 }
 
-export { AuthenticateUserUseCase };
+export { AuthenticateClientUseCase };

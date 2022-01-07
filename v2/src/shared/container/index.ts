@@ -6,6 +6,8 @@ import { ProductsRepository } from "./../../modules/products/repositories/implem
 import { SellerRepository } from "../../modules/sellers/repositories/implementations/SellerRepository";
 import { ISellerRepository } from "../../modules/sellers/repositories/ISellerRepository";
 import { IProductsRepository } from "../../modules/products/repositories/IProductsRepository";
+import { ClientRepository } from "../../modules/clients/repositories/implementations/ClientRepository";
+import { IClientRepository } from "../../modules/clients/repositories/IClientRepository";
 
 container.registerSingleton<ISellerRepository>(
   "SellerRepository",
@@ -20,4 +22,9 @@ container.registerSingleton<IProductsRepository>(
 container.registerSingleton<ICategoryRepository>(
   "CategoryRepository",
   CategoryRepository
+);
+
+container.registerSingleton<IClientRepository>(
+  "ClientRepository",
+  ClientRepository
 );

@@ -13,7 +13,7 @@ describe("Create Client", () => {
   it("should be able to create a new client", async () => {
     const client = await createClientUseCase.execute({
       name: "Client Test",
-      cpf: Number("00022233388"),
+      cpf: "00022233388",
       about: "About client Test",
       email: "client@example.com",
       password: "123456",

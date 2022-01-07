@@ -17,7 +17,7 @@ export class CreateClients1641487346114 implements MigrationInterface {
           },
           {
             name: "cpf",
-            type: "int",
+            type: "varchar",
           },
           {
             name: "about",
@@ -46,5 +46,7 @@ export class CreateClients1641487346114 implements MigrationInterface {
     );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable("clients");
+  }
 }
