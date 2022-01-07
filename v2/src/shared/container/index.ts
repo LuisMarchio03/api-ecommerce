@@ -8,6 +8,8 @@ import { ISellerRepository } from "../../modules/sellers/repositories/ISellerRep
 import { IProductsRepository } from "../../modules/products/repositories/IProductsRepository";
 import { ClientRepository } from "../../modules/clients/repositories/implementations/ClientRepository";
 import { IClientRepository } from "../../modules/clients/repositories/IClientRepository";
+import { IAdminRepository } from "../../modules/admin/repositories/IAdminRepository";
+import { AdminRepository } from "../../modules/admin/repositories/implementations/AdminRepository";
 
 container.registerSingleton<ISellerRepository>(
   "SellerRepository",
@@ -27,4 +29,9 @@ container.registerSingleton<ICategoryRepository>(
 container.registerSingleton<IClientRepository>(
   "ClientRepository",
   ClientRepository
+);
+
+container.registerSingleton<IAdminRepository>(
+  "AdminRepository",
+  AdminRepository
 );
