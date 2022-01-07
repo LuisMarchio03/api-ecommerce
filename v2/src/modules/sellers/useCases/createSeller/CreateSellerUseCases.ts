@@ -21,7 +21,6 @@ export class CreateSellerUseCases {
     address,
     number,
     cep,
-    isAdmin,
   }: ICreateSellerDTO): Promise<Seller> {
     const userAlreadyExists = await this.sellerRepository.findByName(name);
 
@@ -41,7 +40,6 @@ export class CreateSellerUseCases {
       address,
       number,
       cep,
-      isAdmin,
     });
 
     return user;

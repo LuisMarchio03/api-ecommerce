@@ -27,7 +27,8 @@ export class ClientRepositoryInMemory implements IClientRepository {
     return client;
   }
   async find(): Promise<Client[]> {
-    throw new Error("Method not implemented.");
+    const clientsAll = this.clients;
+    return clientsAll;
   }
   async findByName(name: string): Promise<Client> {
     throw new Error("Method not implemented.");

@@ -28,6 +28,8 @@
 
 **[] Cadastrar conta bancaria**
 
+**[] CRUD completo de Sellers**
+
 ## OTHER
 
 **[] Aplicar conceito de SEED**

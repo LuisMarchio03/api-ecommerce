@@ -18,9 +18,13 @@ productsRoutes.get("/", new ListAllProductsController().handle);
 productsRoutes.get("/search", new listProductsByCategoryIdController().handle);
 // productsRoutes.put(
 //   "/:id",
-//   ensureAuthenticated,
+//   ensureAuthenticatedSeller
 //   new UpdateProductsController().handle
 // );
-productsRoutes.delete("/:id", new DeleteProductsController().handle);
+productsRoutes.delete(
+  "/:id",
+  ensureAuthenticatedSeller,
+  new DeleteProductsController().handle
+);
 
 export { productsRoutes };

@@ -1,5 +1,5 @@
-import { getRepository, Repository } from "typeorm";
-import { ICreateSellerDTO } from "../../dtos";
+import { getRepository, Repository, UpdateResult } from "typeorm";
+import { ICreateSellerDTO, IUpdateSellerDTO } from "../../dtos";
 import { Seller } from "../../entities/Seller";
 import { ISellerRepository } from "../ISellerRepository";
 
@@ -20,7 +20,6 @@ export class SellerRepository implements ISellerRepository {
     address,
     number,
     cep,
-    isAdmin,
   }: ICreateSellerDTO): Promise<Seller> {
     const seller = this.repository.create({
       name,
@@ -40,22 +39,46 @@ export class SellerRepository implements ISellerRepository {
   }
 
   async find(): Promise<Seller[]> {
-    const user = await this.repository.find();
-    return user;
+    const seller = await this.repository.find();
+    return seller;
   }
 
   async findByEmail(email: string): Promise<Seller> {
-    const user = await this.repository.findOne({ email });
-    return user;
+    const seller = await this.repository.findOne({ email });
+    return seller;
   }
 
   async findByName(name: string): Promise<Seller> {
-    const user = await this.repository.findOne({ name });
-    return user;
+    const seller = await this.repository.findOne({ name });
+    return seller;
   }
 
   async findById(id: string): Promise<Seller> {
-    const user = await this.repository.findOne(id);
-    return user;
+    const seller = await this.repository.findOne(id);
+    return seller;
+  }
+
+  async update({
+    id,
+    name,
+    email,
+    password,
+    phone,
+    cpf,
+    city,
+    address,
+    number,
+    cep,
+  }: IUpdateSellerDTO): Promise<Seller> {
+    const seller = await this.repository
+      .createQueryBuilder()
+      .update(Seller)
+      .set({ name, email, password, phone, cpf, city, address, number, cep })
+      .where("id = :id", { id })
+      .execute();
+
+    const results = await this.repository.findOne(id);
+
+    return results;
   }
 }

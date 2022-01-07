@@ -1,5 +1,6 @@
 import { Seller } from "../entities/Seller";
-import { ICreateSellerDTO } from "../dtos";
+import { ICreateSellerDTO, IUpdateSellerDTO } from "../dtos";
+import { UpdateResult } from "typeorm";
 
 export interface ISellerRepository {
   create({
@@ -12,10 +13,21 @@ export interface ISellerRepository {
     address,
     number,
     cep,
-    isAdmin,
   }: ICreateSellerDTO): Promise<Seller>;
   find(): Promise<Seller[]>;
   findByName(name: string): Promise<Seller>;
   findByEmail(email: string): Promise<Seller>;
   findById(id: string): Promise<Seller>;
+  update({
+    id,
+    name,
+    email,
+    password,
+    phone,
+    cpf,
+    city,
+    address,
+    number,
+    cep,
+  }: IUpdateSellerDTO): Promise<Seller>;
 }
