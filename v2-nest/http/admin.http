@@ -1,0 +1,51 @@
+###
+POST http://localhost:3000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY0Nzk5MjksImV4cCI6MTY0OTA3MTkyOX0.pa1Dv8k-cqLG8qpdl5tW17nglSyhQju9l9nsMQoocSY
+Content-Type: application/json
+
+{
+  "name": "OUTRO products",
+  "quantity": 12,
+  "price": 234,
+  "categoryId": "6220e6c97a4d3d2451a0241b"
+}
+
+###
+PATCH http://localhost:3000/products/62234a82aee557ca66cfbac1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY0Nzk5MjksImV4cCI6MTY0OTA3MTkyOX0.pa1Dv8k-cqLG8qpdl5tW17nglSyhQju9l9nsMQoocSY
+
+{
+  "name": "Relogio 2",
+  "quantity": 89,
+  "price": 987,
+  "categoryId": "62234a8daee557ca66cfbac3"
+}
+
+###
+DELETE http://localhost:3000/products/621fd214133959d966bbdfa8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY0Nzk5MjksImV4cCI6MTY0OTA3MTkyOX0.pa1Dv8k-cqLG8qpdl5tW17nglSyhQju9l9nsMQoocSY
+
+
+###
+POST http://localhost:3000/categories
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY0Nzk5MjksImV4cCI6MTY0OTA3MTkyOX0.pa1Dv8k-cqLG8qpdl5tW17nglSyhQju9l9nsMQoocSY
+
+{
+  "name": "Desenvolvimento"
+}
+
+###
+PATCH http://localhost:3000/categories/6220e6d57a4d3d2451a0241d
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY0Nzk5MjksImV4cCI6MTY0OTA3MTkyOX0.pa1Dv8k-cqLG8qpdl5tW17nglSyhQju9l9nsMQoocSY
+
+{
+  "name": "Moda"
+}
+
+###
+DELETE http://localhost:3000/categories/6220e6d57a4d3d2451a0241d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY0Nzk5MjksImV4cCI6MTY0OTA3MTkyOX0.pa1Dv8k-cqLG8qpdl5tW17nglSyhQju9l9nsMQoocSY
+

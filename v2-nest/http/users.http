@@ -1,0 +1,40 @@
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY0Nzk5MjksImV4cCI6MTY0OTA3MTkyOX0.pa1Dv8k-cqLG8qpdl5tW17nglSyhQju9l9nsMQoocSY
+
+###
+GET http://localhost:3000/users/622218560934c84bd1a4e76f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY0Nzk5MjksImV4cCI6MTY0OTA3MTkyOX0.pa1Dv8k-cqLG8qpdl5tW17nglSyhQju9l9nsMQoocSY
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Luís Gabriel Marchió Batista",
+  "email": "luis@gmail.com",
+  "password": "123456",
+  "cpf": "06674117129",
+  "cellphone": "64999918525",
+  "isAdmin": true,
+  "photo": "teste",
+  "balance": "150"
+}
+
+###
+PUT http://localhost:3000/users/621fec3d7683f7394d28c99c
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY0Nzk5MjksImV4cCI6MTY0OTA3MTkyOX0.pa1Dv8k-cqLG8qpdl5tW17nglSyhQju9l9nsMQoocSY
+
+{
+  "name": "Luís Gabriel Marchió Batista",
+  "email": "luis@gmail.com",
+  "cpf": "06674117129",
+  "cellphone": "64999918525",
+  "isAdmin": true,
+  "photo": "teste",
+  "balance": "230"
+}
+
+###
+DELETE  http://localhost:3000/users/621fec3a7683f7394d28c99a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY0Nzk5MjksImV4cCI6MTY0OTA3MTkyOX0.pa1Dv8k-cqLG8qpdl5tW17nglSyhQju9l9nsMQoocSY
