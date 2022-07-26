@@ -7,7 +7,7 @@ import { ICategoriesRepository } from "@modules/products/repositories/ICategorie
 @injectable()
 class CreateCategoryUseCase {
   constructor(
-    // @inject("CategoriesRepository")
+    @inject("CategoriesRepository")
     private categoriesRepository: ICategoriesRepository
   ) {}
 
