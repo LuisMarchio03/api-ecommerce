@@ -7,3 +7,5 @@ coverage
 dist
 ormconfig.json
 package-lock.json
+
+src/__tests__/typeorm/db-tests/database.test.sqlite

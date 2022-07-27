@@ -8,7 +8,8 @@ import { v4 as uuid } from "uuid";
 import createConnection from "@shared/infra/typeorm";
 
 let connection: Connection;
-describe("Create Category Controller", () => {
+
+describe("Read Categories Controller", () => {
   beforeAll(async () => {
     connection = await createConnection();
     await connection.runMigrations();
@@ -28,24 +29,19 @@ describe("Create Category Controller", () => {
     await connection.close();
   });
 
-  it("[POST] Should be able to create a new user", async () => {
+  it("[GET] should be able to read all categories", async () => {
     const responseToken = await request(app).post("/sessions").send({
       email: "admin@rentx.com.br",
       password: "admin",
     });
-
     const { token } = responseToken.body;
 
     const response = await request(app)
-      .post("/categories")
-      .send({
-        name: "Category test 01",
-        description: "Description - Category test 01",
-      })
+      .get("/categories")
       .set({
         Authorization: `Bearer ${token}`,
       });
 
-    expect(response.status).toBe(201);
+    expect(response.status).toBe(200);
   });
 });

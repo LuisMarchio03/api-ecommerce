@@ -2,16 +2,18 @@ import { Router } from "express";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 
 import { CreateCategoryController } from "@modules/products/useCases/createCategory/CreateCategoryController";
+import { ReadCategoriesController } from "@modules/products/useCases/readCategories/ReadCategoriesController";
 
 const categoriesRoutes = Router();
 
 const createCategoryController = new CreateCategoryController();
+const readCategoriesController = new ReadCategoriesController();
 
 categoriesRoutes.post(
   "/",
   ensureAuthenticated,
   createCategoryController.handle
 );
-// categoriesRoutes.get("/", profileUserController.handle);
+categoriesRoutes.get("/", readCategoriesController.handle);
 
 export { categoriesRoutes };
