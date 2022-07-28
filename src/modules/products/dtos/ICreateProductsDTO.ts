@@ -3,7 +3,7 @@ interface ICreateProductsDTO {
   brand: string;
   price: number;
   quantities: number;
-  categories_ids: string[];
+  category_id: string;
 }
 
 export { ICreateProductsDTO };

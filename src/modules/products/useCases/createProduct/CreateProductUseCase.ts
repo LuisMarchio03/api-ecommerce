@@ -14,7 +14,7 @@ class CreateProductUseCase {
   async execute({
     name,
     brand,
-    categories_ids,
+    category_id,
     price,
     quantities,
   }: ICreateProductsDTO): Promise<void> {
@@ -27,7 +27,7 @@ class CreateProductUseCase {
     await this.productsRepository.create({
       name,
       brand,
-      categories_ids,
+      category_id,
       price,
       quantities,
     });

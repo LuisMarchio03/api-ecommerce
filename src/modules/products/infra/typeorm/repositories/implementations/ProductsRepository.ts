@@ -17,14 +17,14 @@ class ProductsRepository implements IProductsRepository {
     brand,
     price,
     quantities,
-    categories_ids,
+    category_id,
   }: ICreateProductsDTO): Promise<void> {
     const category = this.repository.create({
       name,
       brand,
       price,
       quantities,
-      categories_ids,
+      category_id,
     });
     await this.repository.save(category);
   }

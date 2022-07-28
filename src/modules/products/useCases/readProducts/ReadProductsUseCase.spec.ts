@@ -19,7 +19,7 @@ describe("Read Products", () => {
       brand: "BRAND 01 - test",
       price: 100,
       quantities: 10,
-      categories_ids: ["1", "2", "3"],
+      category_id: "2",
     });
 
     await createProductUseCase.execute({
@@ -27,7 +27,7 @@ describe("Read Products", () => {
       brand: "BRAND 02 - test",
       price: 150,
       quantities: 5,
-      categories_ids: ["5", "6", "7"],
+      category_id: "5",
     });
 
     const products = await readProductsUseCase.execute();

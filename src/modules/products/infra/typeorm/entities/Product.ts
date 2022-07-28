@@ -26,12 +26,12 @@ class Product {
   @Column()
   quantities: number;
 
-  @Column()
-  categories_ids: string[];
-
   @ManyToOne(() => Category)
-  @JoinColumn({ name: "categories_ids" })
+  @JoinColumn({ name: "category_id" })
   category: Category;
+
+  @Column()
+  category_id: string;
 
   @CreateDateColumn()
   created_at: Date;

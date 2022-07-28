@@ -11,7 +11,7 @@ class ProductsRepositoryInMemory implements IProductsRepository {
   async create({
     name,
     brand,
-    categories_ids,
+    category_id,
     price,
     quantities,
   }: ICreateProductsDTO): Promise<void> {
@@ -20,7 +20,7 @@ class ProductsRepositoryInMemory implements IProductsRepository {
     Object.assign(product, {
       name,
       brand,
-      categories_ids,
+      category_id,
       price,
       quantities,
     });
@@ -41,7 +41,7 @@ class ProductsRepositoryInMemory implements IProductsRepository {
 
     this.products[findIndex].name = data.name;
     this.products[findIndex].brand = data.brand;
-    this.products[findIndex].categories_ids = data.categories_ids;
+    this.products[findIndex].category_id = data.category_id;
     this.products[findIndex].price = data.price;
     this.products[findIndex].quantities = data.quantities;
   }

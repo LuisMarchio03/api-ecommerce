@@ -9,6 +9,8 @@ import { UsersTokensRepository } from "@modules/accounts/infra/typeorm/repositor
 
 import { ICategoriesRepository } from "@modules/products/repositories/ICategoriesRepository";
 import { CategoriesRepository } from "@modules/products/infra/typeorm/repositories/implementations/CategoriesRepository";
+import { ProductsRepository } from "@modules/products/infra/typeorm/repositories/implementations/ProductsRepository";
+import { IProductsRepository } from "@modules/products/repositories/IProductsRepository";
 
 container.registerSingleton<IUsersRepository>(
   "UsersRepository",
@@ -23,4 +25,9 @@ container.registerSingleton<IUsersTokensRepository>(
 container.registerSingleton<ICategoriesRepository>(
   "CategoriesRepository",
   CategoriesRepository
+);
+
+container.registerSingleton<IProductsRepository>(
+  "ProductsRepository",
+  ProductsRepository
 );
