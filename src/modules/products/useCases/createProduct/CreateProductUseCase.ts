@@ -7,7 +7,7 @@ import { IProductsRepository } from "@modules/products/repositories/IProductsRep
 @injectable()
 class CreateProductUseCase {
   constructor(
-    @inject("")
+    @inject("ProductsRepository")
     private productsRepository: IProductsRepository
   ) {}
 

@@ -2,17 +2,17 @@
 
 ## About - API E-commerce
 
-- **NodeJS** + **Typescript**
+- **NodeJS** + **Typescript** + **TypeORM** + **Tests - Jest** + **Swagger** + **SOLID**
 
 - This API was built for a fictitious car rental company.
 
 ## 📋 Business Rules and Requirements
 
-### Car registration
+### Create Categories
 
 **RF**
 
-- It must be possible to register a new car.
+- Deve ser possível criar uma nova categoria
 
 **RN**
 
