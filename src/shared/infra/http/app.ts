@@ -7,6 +7,10 @@ import swaggerUi from "swagger-ui-express";
 import * as Sentry from "@sentry/node";
 import * as Tracing from "@sentry/tracing";
 
+import { Connection } from "typeorm";
+import { v4 as uuid } from "uuid";
+import { hash } from "bcrypt";
+
 import "@shared/container";
 import upload from "@config/upload";
 import { AppError } from "@shared/errors/AppError";

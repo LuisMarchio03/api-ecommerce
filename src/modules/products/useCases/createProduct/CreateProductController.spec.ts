@@ -39,11 +39,11 @@ describe("Create Product Controller", () => {
     const response = await request(app)
       .post("/products")
       .send({
-        name: "Product test 01",
-        brand: "Brand Test 01",
-        category_id: "2",
+        name: "LIVRO 01 - test",
+        brand: "BRAND 01 - test",
         price: 100,
         quantities: 10,
+        category_id: null,
       })
       .set({
         Authorization: `Bearer ${token}`,
