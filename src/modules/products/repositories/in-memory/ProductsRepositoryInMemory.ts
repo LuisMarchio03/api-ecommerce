@@ -14,10 +14,12 @@ class ProductsRepositoryInMemory implements IProductsRepository {
     category_id,
     price,
     quantities,
+    product_id_stripe,
   }: ICreateProductsDTO): Promise<Product> {
     const product = new Product();
 
     Object.assign(product, {
+      product_id_stripe,
       name,
       brand,
       category_id,

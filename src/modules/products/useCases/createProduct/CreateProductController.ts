@@ -5,7 +5,14 @@ import { CreateProductUseCase } from "./CreateProductUseCase";
 
 class CreateProductController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { name, brand, category_id, price, quantities } = request.body;
+    const {
+      name,
+      brand,
+      category_id,
+      price,
+      quantities,
+      product_id_stripe,
+    } = request.body;
 
     const useCase = container.resolve(CreateProductUseCase);
 
@@ -15,6 +22,7 @@ class CreateProductController {
       category_id,
       price,
       quantities,
+      product_id_stripe,
     });
 
     return response.status(201).send(product);

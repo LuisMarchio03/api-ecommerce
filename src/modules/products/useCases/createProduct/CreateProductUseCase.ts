@@ -45,6 +45,7 @@ class CreateProductUseCase {
       category_id,
       price,
       quantities,
+      product_id_stripe,
     });
   }
 }

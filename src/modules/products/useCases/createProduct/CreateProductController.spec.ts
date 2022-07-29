@@ -44,6 +44,7 @@ describe("Create Product Controller", () => {
         price: 100,
         quantities: 10,
         category_id: null,
+        product_id_stripe: null,
       })
       .set({
         Authorization: `Bearer ${token}`,

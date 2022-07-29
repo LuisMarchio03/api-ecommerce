@@ -27,6 +27,7 @@ describe("Update Product", () => {
       category_id: "2",
       category: new Category(),
       created_at: new Date(),
+      product_id_stripe: null,
     });
 
     await expect(

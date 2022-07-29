@@ -15,6 +15,9 @@ class Product {
   id: string;
 
   @Column()
+  product_id_stripe: string;
+
+  @Column()
   name: string;
 
   @Column()

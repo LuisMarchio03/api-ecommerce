@@ -28,6 +28,7 @@ describe("Create Product", () => {
         price: 100,
         quantities: 10,
         category_id: "2",
+        product_id_stripe: null,
       })
     ).resolves.not.toThrow();
   });
@@ -39,6 +40,7 @@ describe("Create Product", () => {
       price: 100,
       quantities: 10,
       category_id: "2",
+      product_id_stripe: null,
     });
 
     await expect(
@@ -48,6 +50,7 @@ describe("Create Product", () => {
         price: 100,
         quantities: 10,
         category_id: "3",
+        product_id_stripe: null,
       })
     ).rejects.toEqual(new AppError("Product already exists"));
   });

@@ -18,8 +18,10 @@ class ProductsRepository implements IProductsRepository {
     price,
     quantities,
     category_id,
+    product_id_stripe,
   }: ICreateProductsDTO): Promise<Product> {
     const category = this.repository.create({
+      product_id_stripe,
       name,
       brand,
       price,
