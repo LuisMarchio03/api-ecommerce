@@ -16,6 +16,8 @@ import createConnection from "@shared/infra/typeorm";
 import swaggerFile from "../../../swagger.json";
 import { router } from "./routes";
 
+import "../typeorm/seed/admin";
+
 createConnection();
 const app = express();
 
@@ -34,6 +36,7 @@ app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.tracingHandler());
 
 app.use(express.json());
+app.use(express.static("public"));
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
