@@ -1,5 +1,5 @@
 interface ICreateProductsDTO {
-  product_id_stripe: string;
+  product_id_stripe?: string;
   name: string;
   brand: string;
   price: number;

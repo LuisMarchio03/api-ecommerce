@@ -1,7 +1,6 @@
 import { AppError } from "@shared/errors/AppError";
 import { ProductsRepositoryInMemory } from "@modules/products/repositories/in-memory/ProductsRepositoryInMemory";
 import { CreateProductUseCase } from "./CreateProductUseCase";
-import { CreateCategoryUseCase } from "../createCategory/CreateCategoryUseCase";
 import { CategoriesRepositoryInMemory } from "@modules/products/repositories/in-memory/CategoriesRepositoryInMemory";
 import { ReadCategoriesUseCase } from "../readCategories/ReadCategoriesUseCase";
 
@@ -28,7 +27,6 @@ describe("Create Product", () => {
         price: 100,
         quantities: 10,
         category_id: "2",
-        product_id_stripe: null,
       })
     ).resolves.not.toThrow();
   });
@@ -40,7 +38,6 @@ describe("Create Product", () => {
       price: 100,
       quantities: 10,
       category_id: "2",
-      product_id_stripe: null,
     });
 
     await expect(
@@ -50,7 +47,6 @@ describe("Create Product", () => {
         price: 100,
         quantities: 10,
         category_id: "3",
-        product_id_stripe: null,
       })
     ).rejects.toEqual(new AppError("Product already exists"));
   });
