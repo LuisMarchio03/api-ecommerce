@@ -6,7 +6,7 @@ import { IUpdateProductsDTO } from "@modules/products/dtos/IUpdateProductsDTO";
 import { IProductsRepository } from "../IProductsRepository";
 
 class ProductsRepositoryInMemory implements IProductsRepository {
-  products: Product[] = [];
+  public products: Product[] = [];
 
   async create({
     name,
@@ -14,7 +14,7 @@ class ProductsRepositoryInMemory implements IProductsRepository {
     category_id,
     price,
     quantities,
-  }: ICreateProductsDTO): Promise<void> {
+  }: ICreateProductsDTO): Promise<Product> {
     const product = new Product();
 
     Object.assign(product, {
@@ -26,6 +26,7 @@ class ProductsRepositoryInMemory implements IProductsRepository {
     });
 
     this.products.push(product);
+    return product;
   }
 
   async findById(id: string): Promise<Product> {

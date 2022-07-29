@@ -18,7 +18,7 @@ class ProductsRepository implements IProductsRepository {
     price,
     quantities,
     category_id,
-  }: ICreateProductsDTO): Promise<void> {
+  }: ICreateProductsDTO): Promise<Product> {
     const category = this.repository.create({
       name,
       brand,
@@ -26,7 +26,7 @@ class ProductsRepository implements IProductsRepository {
       quantities,
       category_id,
     });
-    await this.repository.save(category);
+    return await this.repository.save(category);
   }
 
   async findAll(): Promise<Product[]> {

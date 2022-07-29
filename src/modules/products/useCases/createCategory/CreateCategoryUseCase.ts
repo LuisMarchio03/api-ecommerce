@@ -1,3 +1,4 @@
+import { Category } from "@modules/products/infra/typeorm/entities/Category";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "@shared/errors/AppError";
 
@@ -11,7 +12,10 @@ class CreateCategoryUseCase {
     private categoriesRepository: ICategoriesRepository
   ) {}
 
-  async execute({ name, description }: ICreateCategoriesDTO): Promise<void> {
+  async execute({
+    name,
+    description,
+  }: ICreateCategoriesDTO): Promise<Category> {
     const categoryAlreadyExists = await this.categoriesRepository.findByName(
       name
     );
@@ -20,7 +24,7 @@ class CreateCategoryUseCase {
       throw new AppError("Category already exists");
     }
 
-    await this.categoriesRepository.create({
+    return await this.categoriesRepository.create({
       name,
       description,
     });

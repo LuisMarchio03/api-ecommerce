@@ -1,15 +1,16 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { CreateProductUseCase } from "./CreateProductUseCase";
+import { UpdateProductUseCase } from "./UpdateProductUseCase";
 
-class CreateProductController {
+class UpdateProductController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { name, brand, category_id, price, quantities } = request.body;
+    const { id } = request.params;
 
-    const useCase = container.resolve(CreateProductUseCase);
+    const useCase = container.resolve(UpdateProductUseCase);
 
-    const product = await useCase.execute({
+    await useCase.execute(id, {
       name,
       brand,
       category_id,
@@ -17,8 +18,8 @@ class CreateProductController {
       quantities,
     });
 
-    return response.status(201).send(product);
+    return response.status(200).send();
   }
 }
 
-export { CreateProductController };
+export { UpdateProductController };

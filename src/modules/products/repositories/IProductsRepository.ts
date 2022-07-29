@@ -3,7 +3,7 @@ import { IUpdateProductsDTO } from "../dtos/IUpdateProductsDTO";
 import { Product } from "../infra/typeorm/entities/Product";
 
 interface IProductsRepository {
-  create(data: ICreateProductsDTO): Promise<void>;
+  create(data: ICreateProductsDTO): Promise<Product>;
   findAll(): Promise<Product[]>;
   findById(id: string): Promise<Product>;
   findByName(name: string): Promise<Product>;

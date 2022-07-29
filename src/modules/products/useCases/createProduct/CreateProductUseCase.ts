@@ -1,3 +1,4 @@
+import { Product } from "@modules/products/infra/typeorm/entities/Product";
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 
@@ -17,14 +18,14 @@ class CreateProductUseCase {
     category_id,
     price,
     quantities,
-  }: ICreateProductsDTO): Promise<void> {
+  }: ICreateProductsDTO): Promise<Product> {
     const productAlreadyExists = await this.productsRepository.findByName(name);
 
     if (productAlreadyExists) {
       throw new AppError("Product already exists");
     }
 
-    await this.productsRepository.create({
+    return await this.productsRepository.create({
       name,
       brand,
       category_id,
