@@ -8,6 +8,9 @@ class User {
   id: string;
 
   @Column()
+  stripe_customer_id: string;
+
+  @Column()
   name: string;
 
   @Column()

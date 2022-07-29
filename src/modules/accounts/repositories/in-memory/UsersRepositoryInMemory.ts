@@ -25,6 +25,10 @@ class UsersRepositoryInMemory implements IUsersRepository {
   async findById(id: string): Promise<User> {
     return this.users.find((user) => user.id === id);
   }
+
+  update(id: string, data): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
 }
 
 export { UsersRepositoryInMemory };
