@@ -5,12 +5,14 @@ import { ensureAdmin } from "../middlewares/ensureAdmin";
 import { CreateProductController } from "@modules/products/useCases/createProduct/CreateProductController";
 import { ReadProductsController } from "@modules/products/useCases/readProducts/ReadProductsController";
 import { ReadProductController } from "@modules/products/useCases/readProduct/ReadProductsController";
+import { DeleteProductController } from "@modules/products/useCases/deleteProduct/DeleteProductController";
 
 const productsRoutes = Router();
 
 const createProductController = new CreateProductController();
 const readProductsController = new ReadProductsController();
 const readProductController = new ReadProductController();
+const deleteProductController = new DeleteProductController();
 
 productsRoutes.post(
   "/",
@@ -20,5 +22,11 @@ productsRoutes.post(
 );
 productsRoutes.get("/", readProductsController.handle);
 productsRoutes.get("/:id", readProductController.handle);
+productsRoutes.delete(
+  "/:id",
+  ensureAuthenticated,
+  ensureAdmin,
+  deleteProductController.handle
+);
 
 export { productsRoutes };

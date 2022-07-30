@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
 import { inject, injectable } from "tsyringe";
+import { ICreateCheckoutDTO } from "../../dtos/ICreateCheckoutDTO";
 
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { IProductsRepository } from "@modules/products/repositories/IProductsRepository";
@@ -15,7 +15,11 @@ class CreateCheckoutSessionUseCase {
     private productsRepository: IProductsRepository
   ) {}
 
-  async execute({ product_id, user_id, quantities }) {
+  async execute({
+    product_id,
+    user_id,
+    quantities,
+  }: ICreateCheckoutDTO): Promise<string> {
     const user = await this.usersRepository.findById(user_id);
     const product = await this.productsRepository.findById(product_id);
 
