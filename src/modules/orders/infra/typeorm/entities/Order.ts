@@ -39,4 +39,4 @@ class Order {
   }
 }
 
-export { Product };
+export { Order };

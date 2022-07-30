@@ -5,11 +5,11 @@ import {
   TableForeignKey,
 } from "typeorm";
 
-export class createProducts1659023468519 implements MigrationInterface {
+export class CreateOrders1659218530579 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "products",
+        name: "orders",
         columns: [
           {
             name: "id",
@@ -17,25 +17,14 @@ export class createProducts1659023468519 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: "category_id",
+            name: "user_id",
             type: "uuid",
             isNullable: true,
           },
           {
-            name: "name",
-            type: "varchar",
-          },
-          {
-            name: "brand",
-            type: "varchar",
-          },
-          {
-            name: "price",
-            type: "numeric",
-          },
-          {
-            name: "quantities",
-            type: "numeric",
+            name: "product_id",
+            type: "uuid",
+            isNullable: true,
           },
           {
             name: "created_at",
@@ -47,12 +36,24 @@ export class createProducts1659023468519 implements MigrationInterface {
     );
 
     await queryRunner.createForeignKey(
-      "products",
+      "orders",
       new TableForeignKey({
-        name: "FKCategoryProduct",
-        referencedTableName: "categories",
+        name: "FKUserOrder",
+        referencedTableName: "users",
         referencedColumnNames: ["id"],
-        columnNames: ["category_id"],
+        columnNames: ["user_id"],
+        onDelete: "CASCADE",
+        onUpdate: "SET NULL",
+      })
+    );
+
+    await queryRunner.createForeignKey(
+      "orders",
+      new TableForeignKey({
+        name: "FKProductOrder",
+        referencedTableName: "products",
+        referencedColumnNames: ["id"],
+        columnNames: ["product_id"],
         onDelete: "CASCADE",
         onUpdate: "SET NULL",
       })
@@ -60,8 +61,10 @@ export class createProducts1659023468519 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey("products", "FKCategoryProduct");
+    await queryRunner.dropForeignKey("orders", "FKProductOrder");
 
-    await queryRunner.dropTable("products");
+    await queryRunner.dropForeignKey("orders", "FKUserOrder");
+
+    await queryRunner.dropTable("orders");
   }
 }

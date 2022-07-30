@@ -4,6 +4,7 @@ import { ICreateCheckoutDTO } from "../../dtos/ICreateCheckoutDTO";
 
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { IProductsRepository } from "@modules/products/repositories/IProductsRepository";
+import { IOrdersRepository } from "@modules/orders/repositories/IOrdersRepository";
 
 const stripe = require("stripe")(`${process.env.STRIPE_SECRET_KEY}`);
 
@@ -13,7 +14,9 @@ class CreateCheckoutSessionUseCase {
     @inject("UsersRepository")
     private usersRepository: IUsersRepository,
     @inject("ProductsRepository")
-    private productsRepository: IProductsRepository
+    private productsRepository: IProductsRepository,
+    @inject("OrdersRepository")
+    private ordersRepository: IOrdersRepository
   ) {}
 
   async execute({
@@ -69,6 +72,11 @@ class CreateCheckoutSessionUseCase {
     await this.productsRepository.update(product_id, {
       ...product,
       quantities: Number(product?.quantities) - Number(quantities),
+    });
+
+    await this.ordersRepository.create({
+      product_id,
+      user_id,
     });
 
     return session.url;
