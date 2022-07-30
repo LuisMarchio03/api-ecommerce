@@ -7,11 +7,8 @@ import { v4 as uuid } from "uuid";
 
 import createConnection from "@shared/infra/typeorm";
 
-const photo_file = `${__dirname}/../../../../__tests__/test-file/nestjs.png`;
-
 let connection: Connection;
-
-describe("Update Photo - Product Controller", () => {
+describe("Update Product Controller", () => {
   beforeAll(async () => {
     connection = await createConnection();
     await connection.runMigrations();
@@ -31,7 +28,7 @@ describe("Update Photo - Product Controller", () => {
     await connection.close();
   });
 
-  it("[PATCH] Should be able to update photo a product", async () => {
+  it("[PUT] Should be able to update product", async () => {
     const responseToken = await request(app).post("/sessions").send({
       email: "admin@rentx.com.br",
       password: "admin",
@@ -40,19 +37,25 @@ describe("Update Photo - Product Controller", () => {
 
     await connection.query(
       `INSERT INTO PRODUCTS(id, name, brand, price, quantities, created_at) 
-        values('22cf2b35-01d4-4ee9-8a3f-9071a45728b3', 'Book Test', 'Brand Book Test', '${Number(
+        values('56a29cc5-4cd6-4ee5-9a8d-7b340ed76d2f', 'Book Test', 'Brand Book Test', '${Number(
           160
         )}', '${Number(16)}', 'now()')
       `
     );
 
     const response = await request(app)
-      .patch(`/products/22cf2b35-01d4-4ee9-8a3f-9071a45728b3/upload/photo`)
-      .attach("photo", photo_file)
+      .put(`/products/56a29cc5-4cd6-4ee5-9a8d-7b340ed76d2f`)
+      .send({
+        name: "Book Test UPDATED",
+        brand: "Brand Book Test UPDATED",
+        price: 120,
+        quantities: 12,
+        category_id: null,
+      })
       .set({
         Authorization: `Bearer ${token}`,
       });
 
-    expect(response.status).toBe(204);
+    expect(response.status).toBe(200);
   });
 });

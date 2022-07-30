@@ -10,7 +10,7 @@
 
 **[] Atendimento ao cliente**
 
-**[] ADD Column table products - photo (Upload de imagens)**
+**[X] ADD Column table products - photo (Upload de imagens)**
 
 **[] ADD Column table products - type (ENUM) (DIGITAL / PHYSICAL)**
 
