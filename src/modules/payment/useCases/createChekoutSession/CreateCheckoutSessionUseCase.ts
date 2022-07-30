@@ -1,3 +1,4 @@
+import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { ICreateCheckoutDTO } from "../../dtos/ICreateCheckoutDTO";
 
@@ -22,6 +23,14 @@ class CreateCheckoutSessionUseCase {
   }: ICreateCheckoutDTO): Promise<string> {
     const user = await this.usersRepository.findById(user_id);
     const product = await this.productsRepository.findById(product_id);
+
+    if (!product) {
+      throw new AppError("Products does not exists");
+    }
+
+    if (product?.quantities < quantities) {
+      throw new AppError("Stock unavailable");
+    }
 
     let customerId = user?.stripe_customer_id;
     if (!user?.stripe_customer_id) {
@@ -55,6 +64,11 @@ class CreateCheckoutSessionUseCase {
       mode: "payment",
       success_url: `${process.env.STRIPE_SUCCESS_URL}`,
       cancel_url: `${process.env.STRIPE_CANCEL_URL}`,
+    });
+
+    await this.productsRepository.update(product_id, {
+      ...product,
+      quantities: Number(product?.quantities) - Number(quantities),
     });
 
     return session.url;
