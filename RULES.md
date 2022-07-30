@@ -6,6 +6,8 @@
 
 **[] Payments**
 
+**[] Orders**
+
 **[] Atendimento ao cliente**
 
 **[] ADD Column table products - photo (Upload de imagens)**

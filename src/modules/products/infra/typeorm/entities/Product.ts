@@ -20,6 +20,9 @@ class Product {
   @Column()
   name: string;
 
+  @Column({ nullable: true })
+  photo?: string;
+
   @Column()
   brand: string;
 
