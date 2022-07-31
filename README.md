@@ -118,7 +118,7 @@
 
 - O usuário precisa estar logado no sistema.
 
-# Recuperar Senha
+### Recuperar Senha
 
 **RF**
 
