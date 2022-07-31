@@ -2,7 +2,7 @@
 
 ## About - API E-commerce
 
-- **NodeJS** + **Typescript** + **TypeORM** + **Tests - Jest** + **Swagger** + **SOLID**
+- **NodeJS** + **Typescript** + **TypeORM** + **Tests - Jest | Supertest** + **SOLID**
 
 - This API was created for an E-commerce, to sell info products (portfolio).
 
@@ -136,13 +136,13 @@
 **1.** Run a git clone
 
 ```
-git clone git@github.com:LuisMarchio03/ignite-rentx.git
+git clone git@github.com:LuisMarchio03/api-ecommerce.git
 ```
 
 **2.** Access the project
 
 ```
-cd  ignite-rentx
+cd  api-ecommerce
 ```
 
 **3.** install the dependencies
@@ -155,24 +155,41 @@ npm i
 
 **4.** run the application
 
+**it is necessary to create an .env based on the .env.example**
+
+**it is necessary to create an ormconfig.json based on the ormconfig.example.json**
+
 ```
 yarn dev
 ou
 npm run dev
 ```
 
+**Automatically an ADMIN user will be created when running an application in development environment**
+
+```
+{
+    "email": "admin@rentx.com.br",
+    "password": "admin"
+}
+```
+
 ## Insomnia
 
 ## 🧪 Tests
 
-**Unitary tests + Integration Tests + Jest**
+**Unitary tests + Integration Tests - Jest | Supertest**
+
+- Run all tests
+
+```
+yarn test
+ou
+npm run test
+```
 
 ## 👨‍💻 Developed by
 
 [**LuisMarchio03**](https://github.com/LuisMarchio03) - **GitHub**
 
 [**Luís Gabriel Marchió Batista**](https://www.linkedin.com/in/lu%C3%ADs-gabriel-marchi%C3%B3-batista-a0aa64206/) - **Linkedin**
-
-<p align="center">
-  <img src=".github/ignite-nodejs.png" width="650" title="Luís Gabriel - Trilha Node.js Ignite">
-</p>
