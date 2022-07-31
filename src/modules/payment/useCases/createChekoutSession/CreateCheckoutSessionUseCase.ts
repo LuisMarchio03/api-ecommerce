@@ -70,7 +70,10 @@ class CreateCheckoutSessionUseCase {
     });
 
     await this.productsRepository.update(product_id, {
-      ...product,
+      name: product?.name,
+      brand: product?.brand,
+      category_id: product?.category_id,
+      price: Number(product?.price),
       quantities: Number(product?.quantities) - Number(quantities),
     });
 
