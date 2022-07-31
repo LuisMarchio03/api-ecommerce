@@ -6,6 +6,6 @@
 
 **[X] Payments**
 
-**[] Orders**
+**[X] Orders**
 
 **[X] ADD Column table products - photo (Upload de imagem)**
