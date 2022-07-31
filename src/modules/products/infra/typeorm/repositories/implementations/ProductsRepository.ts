@@ -1,9 +1,15 @@
-import { getRepository, Repository } from "typeorm";
+import {
+  FindManyOptions,
+  FindOneOptions,
+  getRepository,
+  Repository,
+} from "typeorm";
 import { Product } from "../../entities/Product";
 
 import { ICreateProductsDTO } from "@modules/products/dtos/ICreateProductsDTO";
 import { IUpdateProductsDTO } from "@modules/products/dtos/IUpdateProductsDTO";
 import { IProductsRepository } from "@modules/products/repositories/IProductsRepository";
+import { Category } from "../../entities/Category";
 
 class ProductsRepository implements IProductsRepository {
   private repository: Repository<Product>;
@@ -32,16 +38,18 @@ class ProductsRepository implements IProductsRepository {
   }
 
   async findAll(): Promise<Product[]> {
-    return await this.repository.find();
-    // return await this.repository.find({
-    //   relations: {
-    //     categories: true,
-    // },
-    // });
+    return await this.repository.find({
+      relations: ["category"],
+    });
   }
 
   async findById(id: string): Promise<Product> {
-    return await this.repository.findOne(id);
+    return await this.repository.findOne({
+      where: {
+        id,
+      },
+      relations: ["category"],
+    });
   }
 
   async findByName(name: string): Promise<Product> {

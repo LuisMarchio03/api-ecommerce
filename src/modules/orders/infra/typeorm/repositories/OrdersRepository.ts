@@ -21,11 +21,18 @@ class OrdersRepository implements IOrdersRepository {
   }
 
   async findAll(): Promise<Order[]> {
-    return await this.repository.find();
+    return await this.repository.find({
+      relations: ["product", "user"],
+    });
   }
 
   async findById(id: string): Promise<Order> {
-    return await this.repository.findOne(id);
+    return await this.repository.findOne({
+      where: {
+        id,
+      },
+      relations: ["product", "user"],
+    });
   }
 
   findByProductId(product_id: string): Promise<Order> {
