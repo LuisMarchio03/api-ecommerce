@@ -6,6 +6,7 @@ import { usersRoutes } from "./users.routes";
 import { categoriesRoutes } from "./categories.routes";
 import { productsRoutes } from "./products.routes";
 import { stripeRoutes } from "./stripe.routes";
+import { ordersRoutes } from "./orders.routes";
 
 const router = Router();
 
@@ -14,6 +15,7 @@ router.use("/password", passwordRoutes);
 router.use("/categories", categoriesRoutes);
 router.use("/products", productsRoutes);
 router.use("/payment", stripeRoutes);
+router.use("/orders", ordersRoutes);
 router.use(authenticateRoutes);
 
 export { router };

@@ -20,8 +20,12 @@ class OrdersRepository implements IOrdersRepository {
     await this.repository.save(order);
   }
 
-  findById(id: string): Promise<Order> {
-    throw new Error("Method not implemented.");
+  async findAll(): Promise<Order[]> {
+    return await this.repository.find();
+  }
+
+  async findById(id: string): Promise<Order> {
+    return await this.repository.findOne(id);
   }
 
   findByProductId(product_id: string): Promise<Order> {
