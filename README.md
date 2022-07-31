@@ -155,6 +155,12 @@ npm i
 
 **4.** run the application
 
+**it is necessary to run docker**
+
+```
+sudo docker-compose up
+```
+
 **it is necessary to create an .env based on the .env.example**
 
 **it is necessary to create an ormconfig.json based on the ormconfig.example.json**
