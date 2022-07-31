@@ -1,6 +1,8 @@
-import { Order } from "@modules/orders/infra/typeorm/entities/Order";
-import { IOrdersRepository } from "@modules/orders/repositories/IOrdersRepository";
 import { inject, injectable } from "tsyringe";
+
+import { IOrderResponseDTO } from "@modules/orders/dtos/IOrderResponseDTO";
+import { IOrdersRepository } from "@modules/orders/repositories/IOrdersRepository";
+import { OrdersMap } from "@modules/orders/mapper/OrdersMap";
 
 @injectable()
 class ReadOrdersUseCase {
@@ -9,8 +11,9 @@ class ReadOrdersUseCase {
     private ordersRepository: IOrdersRepository
   ) {}
 
-  async execute(): Promise<Order[]> {
-    return await this.ordersRepository.findAll();
+  async execute(): Promise<IOrderResponseDTO[]> {
+    const orders = await this.ordersRepository.findAll();
+    return OrdersMap.toDTO(orders);
   }
 }
 
