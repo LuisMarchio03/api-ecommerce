@@ -4,7 +4,7 @@
 
 - **NodeJS** + **Typescript** + **TypeORM** + **Tests - Jest** + **Swagger** + **SOLID**
 
-- This API was built for a fictitious car rental company.
+- This API was created for an E-commerce, to sell info products (portfolio).
 
 ## 📋 Business Rules and Requirements
 
@@ -16,102 +16,120 @@
 
 **RN**
 
-- It should not be possible to register a car with an existing license plate.
-- The car must be registered, by default, with availability.
-- The user responsible for the registration must be an administrator user.
+- Não deve ser possível cadastrar uma categoria já existente.
+- O usuário responsável pelo cadastro deve ser um usuário administrador.
 
-### Car listing
-
-**RF**
-
-- It should be possible to list all available cars
-- It should be possible to list all available cars by - category name
-- It should be possible to list all available cars by - brand name
-- It should be possible to list all available cars by - car name
-
-**RN**
-
-- The user does not need to be logged into the system.
-
-### Registration of Specification in the car
+### Read Categories
 
 **RF**
 
-- It must be possible to register a specification for a car
+- Deve ser possível listar todas as categorias
+- Deve ser possível lista uma categoria por ID
 
 **RN**
 
-- It should not be possible to register a specification for an - unregistered car.
-- It should not be possible to register an existing specification for the same car.
-- The user responsible for the registration must be a user - administrator.
+- O usuário não precisar estar logado no sistema.
 
-### Registration of car images
+### Delete Categories
 
 **RF**
 
-- It must be possible to register the image of the car
-
-**RNF**
-
-- Use multer to upload files
+- Deve ser possível deletar as categorias por ID
 
 **RN**
 
-- The user must be able to register more than one image for the - same car
-- The user responsible for the registration must be a user - administrator.
+- Não deve ser possível deletar uma categoria inexistente.
+- O usuário responsável pela exclusão deve ser um usuário administrador.
 
-### Car rental
+### Create Products
 
 **RF**
 
-- It must be possible to register a rental
+- Deve ser possível criar um novo produto
 
 **RN**
 
-- The rental must have a minimum duration of 24 hours.
-- It should not be possible to register a new lease if there is already one open for the same user
-- It should not be possible to register a new rental if there is already one open for the same car
-- The user must be logged into the application
-- When making a rental, the status of the car must be - changed to unavailable
+- Não deve ser possível cadastrar um produto já existente.
+- O usuário responsável pelo cadastro deve ser um usuário administrador.
 
-### Car return
+### Read Products
 
 **RF**
 
-- It must be possible to return a car
+- Deve ser possível listar todos os produtos
+- Deve ser possível lista um produto por ID
 
 **RN**
 
-- If the car is returned with less than 24 hours, it will be charged the full daily rate.
-- When making the return, the car must be released for - another rental.
-- When making the return, the user must be released - for another rental.
-- When making the return, the total rent must be calculated.
-- If the return time is longer than the expected delivery time, a fine will be charged - proportional to the days of delay.
-- If there is a fine, it must be added to the total rent.
-- The user must be logged into the application
+- O usuário não precisar estar logado no sistema.
 
-### User Rental Listing
+### Update Products
 
 **RF**
 
-- It must be possible to search for all rentals for the user
+- Deve ser possível atualizar um produto por ID
 
 **RN**
 
-- The user must be logged into the application
+- Não deve ser possível atualizar um produto inexistente.
+- O usuário responsável pela atualização deve ser um usuário administrador.
 
-### Recover Password
+### Delete Products
 
 **RF**
 
-- It must be possible for the user to recover the password by informing the email
-- The user must receive an email with the step by step for password recovery
-- User should be able to enter a new password
+- Deve ser possível deletar um produto por ID
 
 **RN**
 
-- User needs to enter a new password
-- The link sent for recovery must expire in 3 hours
+- Não deve ser possível deletar um produto inexistente.
+- O usuário responsável pela exclusão deve ser um usuário administrador.
+
+### Create Orders
+
+**RF**
+
+- Deve ser possível criar um novo pedido
+
+**RN**
+
+- A cada compra realizada, devera ser feito um pedido diferente.
+- A criação de um pedido, será feita internamente pela API.
+
+### Read Orders
+
+**RF**
+
+- Deve ser possível listar todos os pedidos por userID.
+- Deve ser possível lista um pedido userID.
+
+**RN**
+
+- O usuário não precisar estar logado no sistema.
+- O usuário só verão os próprios pedidos.
+
+### Payments
+
+**RF**
+
+- Deve ser possível criar um novo checkout session.
+
+**RN**
+
+- O usuário precisa estar logado no sistema.
+
+# Recuperar Senha
+
+**RF**
+
+- Deve ser possível o usuário recuperar a senha informando o e-mail
+- O usuário deve receber um e-mail com o passo a passo para a recuperação da senha
+- O usuário deve conseguir inserir uma nova senha
+
+**RN**
+
+- O usuário precisa informar uma nova senha
+- O link enviado para a recuperação deve expirar em 3 horas
 
 ## 💻 Project Installation
 
