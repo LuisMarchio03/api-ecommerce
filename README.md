@@ -1,6 +1,6 @@
-# 🚀 API E-commerce
+# 🚀 API simple e-commerce
 
-## About - API E-commerce
+## About - api simple e-commerce
 
 - **NodeJS** + **Typescript** + **TypeORM** + **Tests - Jest | Supertest** + **SOLID**
 
